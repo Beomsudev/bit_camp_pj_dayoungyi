@@ -1,7 +1,17 @@
-# revision history
-# dayoung team requirements V1.0 / 1016 - first made
-# V2.0 / 1026 - flask-cors==3.0.9 추가 김범수
+'''
+revision history
+dayoung team requirements V1.0 / 1016 - first made
+V2.0 / 1026 / 수정 김범수 -  flask-cors==3.0.9 
+V3.0 / 1112 / 수정 김범수 -  scikit-learn==0.23.2
+                            scikit-surprise==1.1.1
+                            scipy==1.5.4
+                            beautifulsoup4==4.6.0
+                            lxml==4.6.1
+                            nltk==3.5
+                            konlpy==0.5.2
+                            jpype1==1.1.2
 
+'''
 click==7.1.2
 config==0.5.0.post0
 flask==1.1.2
@@ -33,3 +43,14 @@ tensorflow-hub==0.9.0
 termcolor==1.1.0
 urllib3==1.25.10
 xlrd==1.2.0
+scikit-learn==0.23.2
+scikit-surprise==1.1.1
+scipy==1.5.4
+beautifulsoup4==4.6.0
+lxml==4.6.1
+nltk==3.5
+konlpy==0.5.2
+jpype1==1.1.2
+
+
+

@@ -2,11 +2,9 @@ import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import ChatBot from 'react-simple-chatbot';
 import axios from 'axios';
-
 class Review extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       name: '',
       gender: '',
@@ -17,13 +15,11 @@ class Review extends Component {
       debut: '',
     };
   }
-
   componentWillMount() {
     const { steps } = this.props;
     const { gender, age, name, religion, agency,children,spouse,debut } = steps;
     this.setState({ gender, age, name, religion, agency,spouse,children,debut });
   }
-
   render() {
     const { gender, age, name, religion, agency,spouse, children, debut  } = this.state;
     return (
@@ -69,77 +65,61 @@ class Review extends Component {
     );
   }
 }
-
 Review.propTypes = {
   steps: PropTypes.object,
 };
-
 Review.defaultProps = {
   steps: undefined,
 };
-
 class Answer extends Component {
-  
   constructor(props) {
     super(props);
-
     this.state = {
       target_name: ''
     };
   }
-
   componentWillMount() {
     const { steps } = this.props;
     const { gender, age, name, religion, agency,children,spouse,debut } = steps;
-    
-
     // ['age', 'real_name', 'religion', 'agency', 'spouse', 'children','debut_year', 'gender', 'state'])
-    
     axios.post(`http://localhost:8080/api/chatbot`,
-
     // {"age":50, "real_name":1, "religion":1,"agency":1,"spouse":1,"children":1, "debut":1991,"gender":1})
     {"age":age, "real_name":name, "religion":religion,"agency":agency,"spouse":spouse,"children":children, "debut":debut,"gender":gender})
     .then(res=>{
       // alert("분석 성공")
       //this.setState(res.data)
+      this.state.target_name = res.data
       localStorage.setItem("actor", this.state.target_name)
-      // alert(this.state.target_name)
+      alert(localStorage.getItem("actor"))
     }) 
     .catch(e => {
       alert('분석 실패')
     })
-    
   }
-  
   render() {
-    const {target_name} = this.state;
+    console.log(localStorage.getItem("actor"))
     return (
       <div style={{ width: '100%' }}>
-        <h3> {localStorage.getItem("actor")} 입니다</h3>
+        <h3>{localStorage.getItem("actor")}</h3>
       </div>
     );
   }
 } 
-
 Answer.propTypes = {
   steps: PropTypes.object,
 };
-
 Answer.defaultProps = {
   steps: undefined,
 };
-
 const config = {
   width: "600px",
   height: "700px"
 };
-
 class MyChatbot extends Component {
   render() {
     return (
       <ChatBot {...config} style={{"border": "1px solid black"}}
         steps={[
-
           { 
             id: '1',
             message: "배우의 성별은 어떻게 됩니까?",
@@ -169,11 +149,9 @@ class MyChatbot extends Component {
             } else if (value > 120) {
               return `${value}? Come on!`;
             }
-
             return true;
           },
         },
-        
         {
           id: '3',
           message: "배우는 가명이 있습니까?",
@@ -186,7 +164,6 @@ class MyChatbot extends Component {
             {value: 0, label: '아니요 본명으로 활동 중입니다', trigger: '4'},
           ]
         },
-          
         {
           id: '4',
           message: '종교가 있습니까?',
@@ -199,7 +176,6 @@ class MyChatbot extends Component {
               {value: 0, label: '아니요 종교가 없습니다', trigger: '5'},
           ]
         },
-        
         {
           id: '5',
           message: '소속사가 있습니까?',
@@ -339,5 +315,4 @@ class MyChatbot extends Component {
     );
   }
 }
-
 export default MyChatbot;

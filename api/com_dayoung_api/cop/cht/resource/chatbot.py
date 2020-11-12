@@ -1,4 +1,3 @@
-  
 from flask_restful import Resource, reqparse
 from flask import request
 from com_dayoung_api.cop.act.model.actor_ai import ActorAi

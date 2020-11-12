@@ -26,16 +26,6 @@ class MovieDfo:
     >
     >
     >
-    
-    -. movies_metadata.csv
-    >
-    >
-    >
-
-    -. credits.csv
-    >
-    >
-    >
 
     -. keyword.csv
     >
@@ -63,10 +53,6 @@ class MovieDfo:
         print('***** 무비 렌즈 UI용 DF가공 완료 *****')
 
         return merge_movie_lens_kmdb_naver_df
-        # print(movie_lens_meta_df)
-        # print(movie_lens_keyword_df)
-        # print(movie_lens_credits_df)
-        # print(kmdb_naver_df)
 
     def read_movie_lens_meta_csv(self):
         print('***** 무비렌즈 메타 데이터 읽기*****')
