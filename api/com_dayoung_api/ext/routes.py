@@ -92,6 +92,7 @@ api = Api(reviewtop)
 
 def initialize_routes(api):
     api.add_resource(Home, '/api')
+
 ############################## USER ##############################
     api.add_resource(User, '/api/user/<string:id>')
     api.add_resource(Users, '/api/users')
@@ -111,7 +112,7 @@ def initialize_routes(api):
 ############################## CHATBOT ############################
 
 ############################## MOVIE ##############################
-    api.add_resource(Movie, '/api/movie')
+    api.add_resource(Movie, '/api/movie','/api/movie/<string:title>') #  '/api/movie/<string:mov_id>', 
     api.add_resource(Movies, '/api/movies')
     api.add_resource(MovieSearch, '/api/movie-search/<string:title>')
     api.add_resource(MovieDel, '/api/movie-del')

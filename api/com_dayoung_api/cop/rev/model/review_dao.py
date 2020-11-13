@@ -36,6 +36,7 @@ class ReviewDao(ReviewDto):
         titles = session.query(cls, MovieDto.title_kor).filter(cls.mov_id.like(MovieDto.mov_id)).all()
         titledict = {} # 타이틀 뽑아 왔음
         for title in titles:
+            print('왜 안돼?', titledict[title-2])
             if title[-1] not in titledict:
                 titledict[title[-1]] = 1
             else:

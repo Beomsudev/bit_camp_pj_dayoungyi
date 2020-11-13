@@ -77,7 +77,7 @@ export default function MovieDetail() {
     try {
         const req = {
             method: c.get,
-            url: `${c.url}/api/movie-search/${title}`,
+            url: `${c.url}/api/movie/${title}`,
             auth: c.auth
         }
         const res = await axios(req)
@@ -108,14 +108,14 @@ export default function MovieDetail() {
       <CssBaseline />
       <main>
         <div>
-          {/* <nav>
+          <nav>
             <ol>
                 <li><Link to='/movie-register'>Movie Register</Link></li>
                 <li><Link to='/movie-list'>Movie List</Link></li>
                 <li><Link to='/movie-modify'>Movie Modify</Link></li>
                 <li><Link to='/movie-remove'>Movie Remove</Link></li>
             </ol>
-          </nav> */}
+          </nav>
           
           제목 검색 : <input type="text" id='Title'/> 
           <button type="button" class="btn btn-sm btn-primary" id="btnSearch" onClick={fetchSomeMovie}>Search</button>
